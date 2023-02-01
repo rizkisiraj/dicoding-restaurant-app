@@ -33,8 +33,13 @@ const RestaurantList = {
   async afterRender() {
     const restaurants = await RestaurantAPISource.getAllRestaurants();
     const restaurantsContainer = document.querySelector('.restaurant-card__container');
+    const jelajahRestoButton = document.querySelector('#jelajahiRestoranButton');
     restaurants.forEach((restaurant) => {
       restaurantsContainer.innerHTML += createRestaurantTemplate(restaurant);
+    });
+    jelajahRestoButton.addEventListener('click', (event) => {
+      event.preventDefault();
+      document.querySelector('#main-content').focus();
     });
   },
 

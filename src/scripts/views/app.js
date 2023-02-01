@@ -27,15 +27,9 @@ class App {
     this._content.innerHTML = await page.render();
     await page.afterRender();
     const skipLinkElem = document.querySelector('.skip-to-content');
-    const jelajahRestoButton = document.querySelector('#jelajahiRestoranButton');
     skipLinkElem.addEventListener('click', (event) => {
       event.preventDefault();
-      document.querySelector('#main-content').focus();
-    });
-
-    jelajahRestoButton.addEventListener('click', (event) => {
-      event.preventDefault();
-      document.querySelector('#main-content').focus();
+      document.querySelector('#mainContent').focus();
     });
   }
 }
