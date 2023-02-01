@@ -29,3 +29,24 @@ Scenario('liking one restaurant', async ({I}) => {
 
   assert.strictEqual(firstRestaurantTitle, likedRestaurantTitle);
 });
+
+Scenario('unliking one restaurant', async ({I}) => {
+  I.see('Tidak Ada Restoran Favorit', '.empty-restaurant');
+
+  I.amOnPage('/');
+  I.waitForElement('.card__button');
+
+  const firstRestaurantButton = locate('.card__button').first();
+
+  I.click(firstRestaurantButton);
+  I.click('#likeButton');
+
+  I.amOnPage('/#/favorite');
+  I.seeElement('.card__button');
+  I.click(locate('.card__button').first());
+
+  I.click('#likeButton');
+  I.amOnPage('/#/favorite');
+
+  I.see('Tidak Ada Restoran Favorit', '.empty-restaurant');
+});
