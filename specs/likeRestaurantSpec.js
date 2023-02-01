@@ -1,5 +1,4 @@
 /* eslint-disable */
-import { async } from 'regenerator-runtime';
 import FavoriteRestaurantIdb from '../src/scripts/data/favorite-restaurant-idb';
 import * as TestFactories from './helpers/testFactories';
 
@@ -13,6 +12,7 @@ describe('Menyukai restoran', () => {
   });
 
   it('should show the like Button when the restaurant has not been liked before', async () => {
+    await FavoriteRestaurantIdb.deleteRestaurant(1);
     await TestFactories.createLikeButtonPresenterWithRestaurant({id: 1});
 
     expect(document.querySelector('[aria-label="like this restaurant"]')).toBeTruthy();
